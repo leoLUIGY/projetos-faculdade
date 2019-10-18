@@ -7,7 +7,7 @@ public class TutorialCenario : MonoBehaviour
 {
     public GameObject letrasTutorial;
     public GameObject inimigos;
-    public GameObject background;
+   // public GameObject background;
 
     private float x = 13.2f;
     private float y = -1.51f;
@@ -52,7 +52,7 @@ public class TutorialCenario : MonoBehaviour
             for (int i = 0; i < 10; i++)
             {
                // Instantiate(inimigos, new Vector3(x + (i*10), y, z),
-               //  inimigos.transform.rotation);
+                //inimigos.transform.rotation);
             }
             teclas = 3;
         }

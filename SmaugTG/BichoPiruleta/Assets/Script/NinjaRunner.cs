@@ -12,12 +12,20 @@ public class NinjaRunner : MonoBehaviour
     public Text balas;
     public Text vidas;
 
-
+    public Rigidbody2D body;
     public static int quantidadeDeBalas;
     public static bool face = true;
-    private float vel = 2.5f;
+    private float vel = 5f;
     public static int vida = 3;
+   
+    private bool correrAntes;
 
+    public Transform groundCheck;
+    private bool grounded;
+    private float groundRadious = 0.2f;
+    public LayerMask oQueChao;
+    private float jumpForce = 600f;
+   
 
 
     public GameObject cano;
@@ -33,6 +41,8 @@ public class NinjaRunner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        body = gameObject.GetComponent<Rigidbody2D>();
+        correrAntes = false;
         quantidadeDeBalas = 0;
         sucataPontos = 0;
         correndo = GetComponent<Animator>();
@@ -45,20 +55,28 @@ public class NinjaRunner : MonoBehaviour
         tiro.SetBool("tiro", false);
     }
 
+
     // Update is called once per frame
     void Update()
     {
+
+        grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadious, oQueChao);
         sucataLiberada.text = sucataPontos.ToString();
         vidas.text = vida.ToString();
         balas.text = quantidadeDeBalas.ToString();
+
+        mover();
+        ataques();
+
+        if (Input.GetKeyDown(KeyCode.W) && grounded == true) {
+            body.AddForce(new Vector2(0, jumpForce));
+        }
 
         if (vida <= 0) {
             Destroy(this.gameObject); 
         }
 
-        mover();
-        ataques();
-      
+
         if (Input.GetKeyDown(KeyCode.D) && !face) {
             flip();
           
@@ -104,25 +122,33 @@ public class NinjaRunner : MonoBehaviour
     {
         if ((Input.GetKeyUp(KeyCode.D)) || (Input.GetKeyUp(KeyCode.A)))
         {
-            correndo.SetBool("correndo", false);
+            correrAntes = false;
+            correndo.SetBool("correndo", correrAntes);
 
         }
 
 
         if (Input.GetKey(KeyCode.D) && TutorialCenario.teclas > 2)
         {
+            correrAntes = true;
+            correndo.SetBool("correndo", correrAntes);
 
-            correndo.SetBool("correndo", true);
-            transform.Translate(new Vector2(vel * Time.deltaTime, 0));
+            if (correrAntes == true)
+            {
+                transform.Translate(new Vector2(vel * Time.deltaTime, 0));
+            }
         }
 
 
         else if (Input.GetKey(KeyCode.A) && TutorialCenario.teclas > 1)
         {
+            correrAntes = true;
+            correndo.SetBool("correndo", correrAntes);
 
-            correndo.SetBool("correndo", true);
-
-            transform.Translate(new Vector2(-vel * Time.deltaTime, 0));
+            if (correrAntes == true)
+            {
+                transform.Translate(new Vector2(-vel * Time.deltaTime, 0));
+            }
         }
        
     }
@@ -135,6 +161,13 @@ public class NinjaRunner : MonoBehaviour
 
 
     void OnCollisionEnter2D(Collision2D col ) {
+
+        if (col.gameObject.CompareTag("bala"))
+        {
+
+            Destroy(col.gameObject);
+            vida--;
+        }
 
         if (col.gameObject.CompareTag("parede"))
         {
