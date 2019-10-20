@@ -59,9 +59,10 @@ public class InimigoNormal : MonoBehaviour
     {
         if (col.gameObject.CompareTag("bala"))
         {
-
-            Destroy(col.gameObject);
             vidas--;
+            StartCoroutine(danoCor(0.2f));
+            Destroy(col.gameObject);
+
         }
 
         if (col.gameObject.CompareTag("Player"))

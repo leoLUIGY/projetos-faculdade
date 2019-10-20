@@ -43,7 +43,7 @@ public class NinjaRunner : MonoBehaviour
     {
         body = gameObject.GetComponent<Rigidbody2D>();
         correrAntes = false;
-        quantidadeDeBalas = 0;
+        quantidadeDeBalas = 10;
         sucataPontos = 0;
         correndo = GetComponent<Animator>();
         ataqueNormal = GetComponent<Animator>();

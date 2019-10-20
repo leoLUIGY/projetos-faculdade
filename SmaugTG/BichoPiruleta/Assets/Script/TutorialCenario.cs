@@ -51,8 +51,8 @@ public class TutorialCenario : MonoBehaviour
             letrasTutorial.SetActive(false);
             for (int i = 0; i < 10; i++)
             {
-               // Instantiate(inimigos, new Vector3(x + (i*10), y, z),
-                //inimigos.transform.rotation);
+                Instantiate(inimigos, new Vector3(x + (i*10), y, z),
+                inimigos.transform.rotation);
             }
             teclas = 3;
         }
