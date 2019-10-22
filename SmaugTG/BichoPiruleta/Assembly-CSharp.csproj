@@ -53,14 +53,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Script\AtiradorPrecisao.cs" />
      <Compile Include="Assets\Script\AutoCameraSetup.cs" />
      <Compile Include="Assets\Script\Bala.cs" />
+     <Compile Include="Assets\Script\CanoRotaçao.cs" />
      <Compile Include="Assets\Script\InimigoAtira.cs" />
      <Compile Include="Assets\Script\InimigoNormal.cs" />
      <Compile Include="Assets\Script\Menu.cs" />
      <Compile Include="Assets\Script\NewBehaviourScript.cs" />
      <Compile Include="Assets\Script\NinjaRunner.cs" />
      <Compile Include="Assets\Script\ReporBalas.cs" />
+     <Compile Include="Assets\Script\RoboColetor.cs" />
      <Compile Include="Assets\Script\TutorialCenario.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>/home/leonidas/Área de Trabalho/projetos-faculdade/SmaugTG/BichoPiruleta/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
