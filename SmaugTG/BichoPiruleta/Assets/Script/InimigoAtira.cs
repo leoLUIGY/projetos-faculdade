@@ -13,6 +13,7 @@ public class InimigoAtira : MonoBehaviour
     public static bool face = true;
     private float linhaFimX, linhaFimY;
 
+    public bool atirar;
     public static bool linha;
     public bool linhaChao;
     public bool linhaChao2;
@@ -41,7 +42,10 @@ public class InimigoAtira : MonoBehaviour
         linhaChao = Physics2D.Linecast(linhaInicioChao.position, linhaFimChao.position, 1 << LayerMask.NameToLayer("chao"));
         linhaChao2 = Physics2D.Linecast(linhaInicioChao.position, linhaFimChao.position, 1 << LayerMask.NameToLayer("obstaculos"));
 
-
+        if (atirar == true)
+        {
+            linhaFim.position = new Vector2(linhaFimX, linhaFimY);
+        }
 
         if (linha == true)
         {
@@ -96,8 +100,17 @@ public class InimigoAtira : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.CompareTag("Player"))
         {
-            linhaFim.position = new Vector2(linhaFimX, linhaFimY);
 
+            atirar = true;
+        }
+
+    }
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+
+            atirar = false;
         }
 
     }

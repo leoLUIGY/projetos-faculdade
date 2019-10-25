@@ -60,8 +60,8 @@
      <Compile Include="Assets\Script\InimigoAtira.cs" />
      <Compile Include="Assets\Script\InimigoNormal.cs" />
      <Compile Include="Assets\Script\Menu.cs" />
-     <Compile Include="Assets\Script\NewBehaviourScript.cs" />
      <Compile Include="Assets\Script\NinjaRunner.cs" />
+     <Compile Include="Assets\Script\PrecisaoPersegue.cs" />
      <Compile Include="Assets\Script\ReporBalas.cs" />
      <Compile Include="Assets\Script\RoboColetor.cs" />
      <Compile Include="Assets\Script\TutorialCenario.cs" />

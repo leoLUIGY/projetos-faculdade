@@ -1471,6 +1471,7 @@ MonoBehaviour:
   linhaFim: {fileID: 963490684}
   linhaInicioChao: {fileID: 574286362}
   linhaFimChao: {fileID: 290656677}
+  atirar: 0
   linhaChao: 0
   linhaChao2: 0
 --- !u!95 &574286366
@@ -1731,6 +1732,7 @@ MonoBehaviour:
   linhaFim: {fileID: 435960711}
   linhaInicioChao: {fileID: 590073415}
   linhaFimChao: {fileID: 1135814338}
+  atirar: 0
   linhaChao: 0
   linhaChao2: 0
 --- !u!95 &590073413
@@ -1931,8 +1933,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 609823183}
-  - component: {fileID: 609823184}
   - component: {fileID: 609823185}
+  - component: {fileID: 609823186}
+  - component: {fileID: 609823184}
   m_Layer: 0
   m_Name: CanoInimigo
   m_TagString: Untagged
@@ -1947,14 +1950,47 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609823182}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 5.85, y: -0.53, z: -0.2}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7074214, w: 0.70679206}
+  m_LocalPosition: {x: 5.85, y: -0.53, z: -19.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1895853604}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!54 &609823184
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90.051}
+--- !u!65 &609823184
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609823182}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &609823185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609823182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b260d999552befcfa24b6fcf7ee548c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cano: {fileID: 609823186}
+  destino: {fileID: 1044494214}
+  canoInimigo: {fileID: 609823182}
+  balaInimigo: {fileID: 4927035408599129972, guid: c8fafa50ea57d1325a217c6e478507db,
+    type: 3}
+  linhaIni: {fileID: 609823183}
+  linhaFim: {fileID: 1130996835}
+  pointAngle: 0
+--- !u!54 &609823186
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1968,27 +2004,8 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 16
+  m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &609823185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 609823182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b260d999552befcfa24b6fcf7ee548c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cano: {fileID: 609823184}
-  destino: {fileID: 1044494214}
-  canoInimigo: {fileID: 609823182}
-  balaInimigo: {fileID: 4927035408599129972, guid: c8fafa50ea57d1325a217c6e478507db,
-    type: 3}
-  linhaIni: {fileID: 609823183}
-  linhaFim: {fileID: 1130996835}
 --- !u!1 &627524346
 GameObject:
   m_ObjectHideFlags: 0
@@ -2137,7 +2154,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 710734888}
-  - component: {fileID: 710734889}
   - component: {fileID: 710734890}
   m_Layer: 0
   m_Name: CanoInimigo
@@ -2160,22 +2176,6 @@ Transform:
   m_Father: {fileID: 590073415}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!54 &710734889
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 710734887}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 16
-  m_CollisionDetection: 0
 --- !u!114 &710734890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2188,13 +2188,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b260d999552befcfa24b6fcf7ee548c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cano: {fileID: 710734889}
+  cano: {fileID: 0}
   destino: {fileID: 1044494214}
   canoInimigo: {fileID: 710734887}
   balaInimigo: {fileID: 4927035408599129972, guid: c8fafa50ea57d1325a217c6e478507db,
     type: 3}
   linhaIni: {fileID: 710734888}
   linhaFim: {fileID: 435960711}
+  pointAngle: 0
 --- !u!1 &801540921
 GameObject:
   m_ObjectHideFlags: 0
@@ -3284,6 +3285,7 @@ GameObject:
   - component: {fileID: 1379516147}
   - component: {fileID: 1379516146}
   - component: {fileID: 1379516145}
+  - component: {fileID: 1379516148}
   m_Layer: 0
   m_Name: AtiradorDePrecisao
   m_TagString: Untagged
@@ -3321,7 +3323,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 100.686554, y: -3.7241783}
+  m_Offset: {x: 89.31996, y: 2.5184326}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3332,7 +3334,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 205.1431, y: 25.062134}
+  m_Size: {x: 208.68161, y: 37.547333}
   m_EdgeRadius: 0
 --- !u!50 &1379516146
 Rigidbody2D:
@@ -3381,6 +3383,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.7673767, y: 4.445195}
   m_EdgeRadius: 0
+--- !u!114 &1379516148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379516143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24d0ffec4415a36babd49dd881a61d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targ: {fileID: 2639281975746308249}
+  linhaInicio: {fileID: 1488153953}
+  linhaFim: {fileID: 1409928218}
+  canoInimigo: {fileID: 1488153952}
+  balaInimigo: {fileID: 0}
+  bater: 0
 --- !u!95 &1379516149
 Animator:
   serializedVersion: 3
@@ -3472,7 +3492,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409928217}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 200.8, y: -0.53, z: -0.2}
+  m_LocalPosition: {x: 200.8, y: -12.4, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1379516144}
@@ -3487,8 +3507,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1488153953}
+  - component: {fileID: 1488153956}
   - component: {fileID: 1488153955}
-  - component: {fileID: 1488153954}
   m_Layer: 0
   m_Name: CanoInimigo
   m_TagString: Untagged
@@ -3504,13 +3524,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1488153952}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 5.85, y: -0.53, z: -0.2}
+  m_LocalPosition: {x: 9.7, y: -0.53, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1379516144}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &1488153954
+--- !u!114 &1488153955
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3528,23 +3548,27 @@ MonoBehaviour:
   canoInimigo: {fileID: 1488153952}
   balaInimigo: {fileID: 4927035408599129972, guid: c8fafa50ea57d1325a217c6e478507db,
     type: 3}
-  bater: 0
---- !u!54 &1488153955
-Rigidbody:
+--- !u!50 &1488153956
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1488153952}
-  serializedVersion: 2
+  m_BodyType: 0
+  m_Simulated: 0
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
   m_Mass: 1
-  m_Drag: 0
+  m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_Constraints: 16
+  m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 2
 --- !u!1 &1499258169
 GameObject:
   m_ObjectHideFlags: 0
@@ -4720,6 +4744,7 @@ MonoBehaviour:
   linhaFim: {fileID: 1130996835}
   linhaInicioChao: {fileID: 1895853604}
   linhaFimChao: {fileID: 687579367}
+  atirar: 0
   linhaChao: 0
   linhaChao2: 0
 --- !u!95 &1895853608
@@ -5309,7 +5334,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2099497176}
-  - component: {fileID: 2099497177}
   - component: {fileID: 2099497178}
   m_Layer: 0
   m_Name: CanoInimigo
@@ -5332,22 +5356,6 @@ Transform:
   m_Father: {fileID: 574286362}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!54 &2099497177
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2099497175}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 16
-  m_CollisionDetection: 0
 --- !u!114 &2099497178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5360,13 +5368,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b260d999552befcfa24b6fcf7ee548c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cano: {fileID: 2099497177}
+  cano: {fileID: 0}
   destino: {fileID: 1044494214}
   canoInimigo: {fileID: 2099497175}
   balaInimigo: {fileID: 4927035408599129972, guid: c8fafa50ea57d1325a217c6e478507db,
     type: 3}
   linhaIni: {fileID: 2099497176}
   linhaFim: {fileID: 963490684}
+  pointAngle: 0
 --- !u!1 &2108153435
 GameObject:
   m_ObjectHideFlags: 0
@@ -5556,12 +5565,12 @@ PrefabInstance:
     - target: {fileID: 4912106545259348857, guid: fea06947534baa4a585388b312802750,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 61.3
+      value: 61.39
       objectReference: {fileID: 0}
     - target: {fileID: 4912106545259348857, guid: fea06947534baa4a585388b312802750,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.4
+      value: 4.13
       objectReference: {fileID: 0}
     - target: {fileID: 4912106545259348857, guid: fea06947534baa4a585388b312802750,
         type: 3}
