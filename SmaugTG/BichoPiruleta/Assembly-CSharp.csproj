@@ -64,7 +64,9 @@
      <Compile Include="Assets\Script\PrecisaoPersegue.cs" />
      <Compile Include="Assets\Script\ReporBalas.cs" />
      <Compile Include="Assets\Script\RoboColetor.cs" />
+     <Compile Include="Assets\Script\RoboSuicida.cs" />
      <Compile Include="Assets\Script\TutorialCenario.cs" />
+     <Compile Include="Assets\Script\VerificaChao.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>/home/leonidas/Área de Trabalho/projetos-faculdade/SmaugTG/BichoPiruleta/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>

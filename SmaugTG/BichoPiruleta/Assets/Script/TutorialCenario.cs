@@ -49,7 +49,7 @@ public class TutorialCenario : MonoBehaviour
 
             //background.GetComponent<SpriteRenderer>().color = Color.clear;
             letrasTutorial.SetActive(false);
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 3; i++)
             {
                 //Instantiate(inimigos, new Vector3(x + (i*10), y, z),
                 //inimigos.transform.rotation);

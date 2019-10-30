@@ -22,9 +22,9 @@ public class NinjaRunner : MonoBehaviour
 
     public Transform groundCheck;
     private bool grounded;
-    private float groundRadious = 0.2f;
+    private float groundRadious = 0.1f;
     public LayerMask oQueChao;
-    private float jumpForce = 600f;
+    private float jumpForce = 300f;
    
 
 
@@ -37,6 +37,9 @@ public class NinjaRunner : MonoBehaviour
 
     public Text sucataLiberada;
     public static int sucataPontos;
+
+    public static AudioClip andar, atirar;
+    public AudioSource sons;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +56,11 @@ public class NinjaRunner : MonoBehaviour
         correndo.SetBool("correndo", false);
         ataqueNormal.SetBool("ataqueNormal", false);
         tiro.SetBool("tiro", false);
+
+        andar = Resources.Load<AudioClip>("Walking");
+        atirar = Resources.Load<AudioClip>("Metralhadora");
+
+        sons = GetComponent<AudioSource>();
     }
 
 
@@ -89,7 +97,7 @@ public class NinjaRunner : MonoBehaviour
     }
 
     public void ataques() { 
-        if (Input.GetKeyDown(KeyCode.Space) && TutorialCenario.teclas >0) {
+        if (Input.GetKeyDown(KeyCode.Space) ) {
            
             ataqueNormal.SetBool("ataqueNormal", true);
         }
@@ -103,7 +111,7 @@ public class NinjaRunner : MonoBehaviour
         {
             tiro.SetBool("tiro", true);
             quantidadeDeBalas--;
-           
+            sons.PlayOneShot(atirar);
             Instantiate(bala, new Vector3(cano.transform.position.x, cano.transform.position.y, cano.transform.position.z), cano.transform.rotation);
 
           
@@ -128,25 +136,28 @@ public class NinjaRunner : MonoBehaviour
         }
 
 
-        if (Input.GetKey(KeyCode.D) && TutorialCenario.teclas > 2)
+        if (Input.GetKey(KeyCode.D) )
         {
             correrAntes = true;
             correndo.SetBool("correndo", correrAntes);
 
             if (correrAntes == true)
             {
+                sons.PlayOneShot(andar);
+                
                 transform.Translate(new Vector2(vel * Time.deltaTime, 0));
             }
         }
 
 
-        else if (Input.GetKey(KeyCode.A) && TutorialCenario.teclas > 1)
+        else if (Input.GetKey(KeyCode.A) )
         {
             correrAntes = true;
             correndo.SetBool("correndo", correrAntes);
 
             if (correrAntes == true)
             {
+                sons.PlayOneShot(andar);
                 transform.Translate(new Vector2(-vel * Time.deltaTime, 0));
             }
         }
@@ -174,7 +185,7 @@ public class NinjaRunner : MonoBehaviour
 
             if (Input.GetKey(KeyCode.D))
             {
-
+               
                 cenario.transform.Translate(new Vector2(-3.5f * Time.deltaTime, 0));
                 chao.transform.Translate(new Vector2(-3 * Time.deltaTime, 0));
             }

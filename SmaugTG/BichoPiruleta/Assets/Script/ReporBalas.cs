@@ -20,6 +20,7 @@ public class ReporBalas : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Player")) {
+
             NinjaRunner.quantidadeDeBalas += 5;
             Destroy(muni);
         }

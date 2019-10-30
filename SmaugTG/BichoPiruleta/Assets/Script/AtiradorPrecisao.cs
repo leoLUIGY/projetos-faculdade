@@ -47,7 +47,7 @@ public class AtiradorPrecisao : MonoBehaviour
 
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-            StartCoroutine(tiroPrecisao(5f));
+            StartCoroutine(tiroPrecisao(2f));
 
         }
 
@@ -58,5 +58,6 @@ public class AtiradorPrecisao : MonoBehaviour
       yield return new WaitForSeconds(troca);
         Instantiate(balaInimigo, new Vector3(canoInimigo.transform.position.x, canoInimigo.transform.position.y,
      canoInimigo.transform.position.z), canoInimigo.transform.rotation);
+        yield return new WaitForSeconds(troca);
     }
 }
