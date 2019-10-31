@@ -859,6 +859,29 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 277775714}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &277775716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9195702908804502064, guid: 55a5f4e6932436cbdb6a344ac2995eb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 277775714}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &277775717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277775716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63af7c9aadebe468eb9aa2fe0f8b2a84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linhaInicioChao: {fileID: 277775715}
+  linhaFimChao: {fileID: 439371548}
+  face: 1
+  vel: 2.5
+  linhaChao: 0
 --- !u!1 &290656676
 GameObject:
   m_ObjectHideFlags: 0
@@ -1635,6 +1658,7 @@ GameObject:
   - component: {fileID: 574286364}
   - component: {fileID: 574286363}
   - component: {fileID: 574286368}
+  - component: {fileID: 574286369}
   m_Layer: 0
   m_Name: InimigoAtira (2)
   m_TagString: Untagged
@@ -1721,11 +1745,7 @@ MonoBehaviour:
   targ: {fileID: 2639281975746308249}
   linhaInicio: {fileID: 2099497176}
   linhaFim: {fileID: 963490684}
-  linhaInicioChao: {fileID: 574286362}
-  linhaFimChao: {fileID: 290656677}
   atirar: 0
-  linhaChao: 0
-  linhaChao2: 0
 --- !u!95 &574286366
 Animator:
   serializedVersion: 3
@@ -1819,6 +1839,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 32.24907, y: 11.061889}
   m_EdgeRadius: 0
+--- !u!114 &574286369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574286361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63af7c9aadebe468eb9aa2fe0f8b2a84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linhaInicioChao: {fileID: 574286362}
+  linhaFimChao: {fileID: 290656677}
+  face: 1
+  vel: 2.5
+  linhaChao: 0
 --- !u!1 &586289093
 GameObject:
   m_ObjectHideFlags: 0
@@ -1913,6 +1950,7 @@ GameObject:
   - component: {fileID: 590073411}
   - component: {fileID: 590073410}
   - component: {fileID: 590073416}
+  - component: {fileID: 590073417}
   m_Layer: 0
   m_Name: InimigoAtira (1)
   m_TagString: Untagged
@@ -1982,11 +2020,7 @@ MonoBehaviour:
   targ: {fileID: 2639281975746308249}
   linhaInicio: {fileID: 710734888}
   linhaFim: {fileID: 435960711}
-  linhaInicioChao: {fileID: 590073415}
-  linhaFimChao: {fileID: 1135814338}
   atirar: 0
-  linhaChao: 0
-  linhaChao2: 0
 --- !u!95 &590073413
 Animator:
   serializedVersion: 3
@@ -2097,6 +2131,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 31.295086, y: 7.9164104}
   m_EdgeRadius: 0
+--- !u!114 &590073417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590073409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63af7c9aadebe468eb9aa2fe0f8b2a84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linhaInicioChao: {fileID: 590073415}
+  linhaFimChao: {fileID: 1135814338}
+  face: 1
+  vel: 2.5
+  linhaChao: 0
 --- !u!1 &595677969
 GameObject:
   m_ObjectHideFlags: 0
@@ -3039,6 +3090,7 @@ GameObject:
   - component: {fileID: 1042985439}
   - component: {fileID: 1042985438}
   - component: {fileID: 1042985443}
+  - component: {fileID: 1042985440}
   m_Layer: 0
   m_Name: Coletor
   m_TagString: Untagged
@@ -3110,6 +3162,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.7673767, y: 4.445195}
   m_EdgeRadius: 0
+--- !u!114 &1042985440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042985436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63af7c9aadebe468eb9aa2fe0f8b2a84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linhaInicioChao: {fileID: 1042985437}
+  linhaFimChao: {fileID: 1894398038}
+  face: 1
+  vel: 2.5
+  linhaChao: 0
 --- !u!95 &1042985441
 Animator:
   serializedVersion: 3
@@ -3192,11 +3261,7 @@ MonoBehaviour:
   golpe: {fileID: 81351894}
   linhaInicio: {fileID: 1042985437}
   linhaFim: {fileID: 143012456}
-  linhaInicioChao: {fileID: 1042985437}
-  linhaFimChao: {fileID: 1894398038}
   linha: 0
-  linhaChao: 0
-  linhaChao2: 0
   vidas: 10
 --- !u!1 &1043465875
 GameObject:
@@ -4362,6 +4427,29 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1517338302}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1517338304 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9195702908804502064, guid: 55a5f4e6932436cbdb6a344ac2995eb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1517338302}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1517338305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517338304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63af7c9aadebe468eb9aa2fe0f8b2a84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linhaInicioChao: {fileID: 1517338303}
+  linhaFimChao: {fileID: 797616899}
+  face: 1
+  vel: 2.5
+  linhaChao: 0
 --- !u!1 &1538739315
 GameObject:
   m_ObjectHideFlags: 0
@@ -5357,6 +5445,7 @@ GameObject:
   - component: {fileID: 1895853606}
   - component: {fileID: 1895853605}
   - component: {fileID: 1895853610}
+  - component: {fileID: 1895853611}
   m_Layer: 0
   m_Name: InimigoAtira (3)
   m_TagString: Untagged
@@ -5443,11 +5532,7 @@ MonoBehaviour:
   targ: {fileID: 2639281975746308249}
   linhaInicio: {fileID: 609823183}
   linhaFim: {fileID: 1130996835}
-  linhaInicioChao: {fileID: 1895853604}
-  linhaFimChao: {fileID: 687579367}
   atirar: 0
-  linhaChao: 0
-  linhaChao2: 0
 --- !u!95 &1895853608
 Animator:
   serializedVersion: 3
@@ -5541,6 +5626,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 47.919918, y: 18.454374}
   m_EdgeRadius: 0
+--- !u!114 &1895853611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895853603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65915c8702e8c19509e4be15edd21150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linhaInicioChao: {fileID: 1895853604}
+  linhaFimChao: {fileID: 687579367}
+  linhaChao2: 0
+  face: 0
+  vel: 2.5
 --- !u!1 &1943536999
 GameObject:
   m_ObjectHideFlags: 0

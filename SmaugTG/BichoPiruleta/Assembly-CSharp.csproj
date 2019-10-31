@@ -67,6 +67,7 @@
      <Compile Include="Assets\Script\RoboSuicida.cs" />
      <Compile Include="Assets\Script\TutorialCenario.cs" />
      <Compile Include="Assets\Script\VerificaChao.cs" />
+     <Compile Include="Assets\Script\VerificarObstaculos.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>/home/leonidas/Área de Trabalho/projetos-faculdade/SmaugTG/BichoPiruleta/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>

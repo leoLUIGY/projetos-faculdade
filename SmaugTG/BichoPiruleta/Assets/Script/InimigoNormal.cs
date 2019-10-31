@@ -8,8 +8,8 @@ public class InimigoNormal : MonoBehaviour
     private float vel = 2.5f;
     public int vidas;
     private bool dano;
-    public Transform linhaInicioChao, linhaFimChao;
-    public static bool face = true;
+
+  
     public GameObject heroi;
     public GameObject inimigo;
     public GameObject muni;
@@ -36,7 +36,7 @@ public class InimigoNormal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((linhaChao == true) || (achouPlayer == true))
+        if (achouPlayer == true)
         {
             transform.Translate(new Vector2(vel * Time.deltaTime, 0));
 
@@ -50,7 +50,6 @@ public class InimigoNormal : MonoBehaviour
 
         }
 
-        linhaChao = Physics2D.Linecast(linhaInicioChao.position, linhaFimChao.position, 1 << LayerMask.NameToLayer("chao"));
         if (dano == true)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -62,23 +61,11 @@ public class InimigoNormal : MonoBehaviour
 
       
 
-        if (linhaChao == false )
-        {
-
-            vel *= -1;
-
-            flip();
-        }
+      
        
 
     }
-    void flip()
-    {
-        face = !face;
-        Vector3 scala = this.gameObject.GetComponent<Transform>().localScale;
-        scala.x *= -1;
-        this.gameObject.GetComponent<Transform>().localScale = scala;
-    }
+   
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("bala"))
