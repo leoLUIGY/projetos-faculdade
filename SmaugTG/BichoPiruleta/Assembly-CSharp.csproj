@@ -57,10 +57,12 @@
      <Compile Include="Assets\Script\AutoCameraSetup.cs" />
      <Compile Include="Assets\Script\Bala.cs" />
      <Compile Include="Assets\Script\CanoRotaçao.cs" />
+     <Compile Include="Assets\Script\Doge.cs" />
      <Compile Include="Assets\Script\InimigoAtira.cs" />
      <Compile Include="Assets\Script\InimigoNormal.cs" />
      <Compile Include="Assets\Script\Menu.cs" />
      <Compile Include="Assets\Script\NinjaRunner.cs" />
+     <Compile Include="Assets\Script\Portais.cs" />
      <Compile Include="Assets\Script\PrecisaoPersegue.cs" />
      <Compile Include="Assets\Script\ReporBalas.cs" />
      <Compile Include="Assets\Script\RoboColetor.cs" />

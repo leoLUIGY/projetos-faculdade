@@ -8,7 +8,7 @@ public class RoboSuicida : MonoBehaviour
     private bool detectado;
     public GameObject destino;
     public GameObject roboSuicida;
-    private float vel = 5;
+    private float vel = 12;
 
     private bool colis;
     public PlayableDirector director;
@@ -18,7 +18,7 @@ public class RoboSuicida : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pointAngle = 250;
+        pointAngle = 280;
         colis = false;
     }
 
@@ -61,6 +61,12 @@ public class RoboSuicida : MonoBehaviour
          }
 
         if (col.gameObject.CompareTag("bala"))
+        {
+
+            Destroy(roboSuicida);
+        }
+
+        if (col.gameObject.CompareTag("chao"))
         {
 
             Destroy(roboSuicida);
