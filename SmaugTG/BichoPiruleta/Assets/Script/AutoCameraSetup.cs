@@ -12,7 +12,7 @@ public class AutoCameraSetup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -26,6 +26,9 @@ public class AutoCameraSetup : MonoBehaviour
             if (Portais.apertou == true)
             {
                 delta = target.position - GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.3f, point.z));
+               
+            } else if (NinjaRunner.parede == true) {
+                delta = target.position - GetComponent<Camera>().ViewportToWorldPoint(new Vector3(point.x, point.y, point.z));
             }
             else
             {
@@ -33,6 +36,24 @@ public class AutoCameraSetup : MonoBehaviour
             }
             Vector3 destination = transform.position + delta;
             transform.position = Vector3.SmoothDamp(transform.position, destination, ref velocity, dampTime);
+          
+        }
+
+        if(Portais.salvarCamera == true) {
+            PlayerPrefs.SetFloat("x", transform.position.x);
+
+            PlayerPrefs.SetFloat("y", transform.position.y);
+
+            PlayerPrefs.SetFloat("z", transform.position.y);
+
+            Portais.salvarCamera = false;
+        }
+
+        if (Menu.carregar == true)
+        {
+            Vector3 pos = new Vector3(PlayerPrefs.GetFloat("x"), PlayerPrefs.GetFloat("y"), PlayerPrefs.GetFloat("z"));
+            transform.position = pos;
+            Menu.carregar = false;
         }
     }
 }

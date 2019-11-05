@@ -17,7 +17,7 @@ public class NinjaRunner : MonoBehaviour
     public static bool face = true;
     private float vel = 5f;
     public static int vida = 3;
-   
+
     private bool correrAntes;
 
     public Transform groundCheck;
@@ -25,13 +25,13 @@ public class NinjaRunner : MonoBehaviour
     private float groundRadious = 0.1f;
     public LayerMask oQueChao;
     private float jumpForce = 300f;
-   
 
+    public static bool parede;
 
     public GameObject cano;
     //public Transform heroiT;
     public GameObject bala;
-  
+
     public GameObject cenario;
     public GameObject chao;
 
@@ -40,6 +40,8 @@ public class NinjaRunner : MonoBehaviour
 
     public static AudioClip andar, atirar;
     public AudioSource sons;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -67,8 +69,20 @@ public class NinjaRunner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Portais.apertou == true)
+        {
+            PlayerPrefs.SetFloat("x", transform.position.x);
 
-        grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadious, oQueChao);
+            PlayerPrefs.SetFloat("y", transform.position.y);
+        }
+    
+        if (Menu.carregar == true)
+        {
+            Vector2 pos = new Vector2(PlayerPrefs.GetFloat("x"), PlayerPrefs.GetFloat("y"));
+    transform.position = pos;
+        }
+
+grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadious, oQueChao);
         sucataLiberada.text = sucataPontos.ToString();
         vidas.text = vida.ToString();
         balas.text = quantidadeDeBalas.ToString();
@@ -76,33 +90,40 @@ public class NinjaRunner : MonoBehaviour
         mover();
         ataques();
 
-        if (Input.GetKeyDown(KeyCode.W) && grounded == true) {
+        if (Input.GetKeyDown(KeyCode.W) && grounded == true)
+        {
             body.AddForce(new Vector2(0, jumpForce));
         }
 
-        if (vida <= 0) {
-            Destroy(this.gameObject); 
+        if (vida <= 0)
+        {
+            Destroy(this.gameObject);
         }
 
 
-        if (Input.GetKeyDown(KeyCode.D) && !face) {
-            flip();
-          
-        } else if (Input.GetKeyDown(KeyCode.A) && face)
+        if (Input.GetKeyDown(KeyCode.D) && !face)
         {
             flip();
-           
+
         }
-        
+        else if (Input.GetKeyDown(KeyCode.A) && face)
+        {
+            flip();
+
+        }
+
     }
 
-    public void ataques() { 
-        if (Input.GetKeyDown(KeyCode.Space) ) {
-           
+    public void ataques()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
             ataqueNormal.SetBool("ataqueNormal", true);
         }
 
-        else {
+        else
+        {
             ataqueNormal.SetBool("ataqueNormal", false);
 
         }
@@ -114,8 +135,8 @@ public class NinjaRunner : MonoBehaviour
             sons.PlayOneShot(atirar);
             Instantiate(bala, new Vector3(cano.transform.position.x, cano.transform.position.y, cano.transform.position.z), cano.transform.rotation);
 
-          
-           
+
+
 
         }
         //if (Input.GetKeyUp(KeyCode.C))
@@ -132,38 +153,41 @@ public class NinjaRunner : MonoBehaviour
         {
             correrAntes = false;
             correndo.SetBool("correndo", correrAntes);
+            sons.Pause();
 
         }
 
 
-        if (Input.GetKey(KeyCode.D) )
+        if (Input.GetKey(KeyCode.D))
         {
             correrAntes = true;
             correndo.SetBool("correndo", correrAntes);
 
             if (correrAntes == true)
             {
-                sons.PlayOneShot(andar);
-                
+                //sons.PlayOneShot(andar);
+                sons.Play();
                 transform.Translate(new Vector2(vel * Time.deltaTime, 0));
             }
         }
 
 
-        else if (Input.GetKey(KeyCode.A) )
+        else if (Input.GetKey(KeyCode.A))
         {
             correrAntes = true;
             correndo.SetBool("correndo", correrAntes);
 
             if (correrAntes == true)
             {
-                sons.PlayOneShot(andar);
+                //sons.PlayOneShot(andar);
+                sons.Play();
                 transform.Translate(new Vector2(-vel * Time.deltaTime, 0));
             }
         }
-       
+
     }
-    void flip() {
+    void flip()
+    {
         face = !face;
         Vector3 scala = this.gameObject.GetComponent<Transform>().localScale;
         scala.x *= -1;
@@ -171,7 +195,8 @@ public class NinjaRunner : MonoBehaviour
     }
 
 
-    void OnCollisionEnter2D(Collision2D col ) {
+    void OnCollisionEnter2D(Collision2D col)
+    {
 
         if (col.gameObject.CompareTag("bala"))
         {
@@ -185,20 +210,46 @@ public class NinjaRunner : MonoBehaviour
 
             if (Input.GetKey(KeyCode.D))
             {
-               
+
                 cenario.transform.Translate(new Vector2(-3.5f * Time.deltaTime, 0));
                 chao.transform.Translate(new Vector2(-3 * Time.deltaTime, 0));
             }
             if (Input.GetKey(KeyCode.A))
             {
-               
+
                 cenario.transform.Translate(new Vector2(3.5f * Time.deltaTime, 0));
                 chao.transform.Translate(new Vector2(3 * Time.deltaTime, 0));
             }
 
 
         }
+
+       
+
     }
-   
+    void OnTriggerEnter2D(Collider2D col)
+    {
+
+
+        if (col.gameObject.CompareTag("parede"))
+        {
+
+            parede = true;
+
+        }
+
+    }
+    void OnTriggerExit2D(Collider2D col)
+    {
+
+
+        if (col.gameObject.CompareTag("parede"))
+        {
+
+            parede = false;
+
+        }
+
+    }
 
 }
