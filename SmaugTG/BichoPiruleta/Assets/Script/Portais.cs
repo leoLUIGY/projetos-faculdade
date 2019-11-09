@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Portais : MonoBehaviour
 {
@@ -8,7 +9,8 @@ public class Portais : MonoBehaviour
     public GameObject loading;
     public static bool apertou;
     public static bool salvarCamera;
-    private int portal;
+    public  int portal;
+   
   
     Vector3 posis;
     // Start is called before the first frame update
@@ -36,10 +38,27 @@ public class Portais : MonoBehaviour
         if (apertou == true && Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(tempoLoad(5f));
+
         }
         if (Menu.carregar == true) {
             PlayerPrefs.GetInt("portais");
         }
+        if (NinjaRunner.vida <= 0)
+        {
+            if (portal == 1)
+            {
+                Destroy(this.gameObject);
+
+                SceneManager.LoadScene(2);
+                NinjaRunner.vida = 3;
+            }
+            else if (portal > 1)
+            { 
+            Menu.Continuar();
+            }
+
+        }
+
     }
 
     void OnTriggerEnter2D(Collider2D col) { 

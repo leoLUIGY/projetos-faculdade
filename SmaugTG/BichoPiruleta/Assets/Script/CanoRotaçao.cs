@@ -13,6 +13,7 @@ public class CanoRotaçao : MonoBehaviour
     public Transform linhaIni;
     public Transform linhaFim;
     public int pointAngle;
+    private bool esperar;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,7 @@ public class CanoRotaçao : MonoBehaviour
            
             if (Physics2D.Linecast(linhaIni.position, linhaFim.position, 1 << LayerMask.NameToLayer("jogador")))
             {
-           
+            esperar = true;
                
            
             var canoPlaye = destino.transform.position - transform.position;
@@ -39,12 +40,20 @@ public class CanoRotaçao : MonoBehaviour
 
             
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-            Instantiate(balaInimigo, new Vector3(canoInimigo.transform.position.x, canoInimigo.transform.position.y,
-     canoInimigo.transform.position.z), transform.rotation);
+                if (esperar == true)
+                {
+                    StartCoroutine(tiroFuzil(2f));
+                }
             }
 
            
         
+    }
+    private IEnumerator tiroFuzil(float troca)
+    {
+        yield return new WaitForSeconds(troca);
+        Instantiate(balaInimigo, new Vector3(canoInimigo.transform.position.x, canoInimigo.transform.position.y,
+    canoInimigo.transform.position.z), transform.rotation);
+        esperar = false;
     }
 }

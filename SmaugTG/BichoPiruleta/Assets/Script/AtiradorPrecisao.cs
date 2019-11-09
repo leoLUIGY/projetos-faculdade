@@ -15,6 +15,8 @@ public class AtiradorPrecisao : MonoBehaviour
 
     public static bool linha;
 
+    private bool espera;
+
     private float vel = 2.5f;
 
     private Animator atiraPara;
@@ -37,7 +39,7 @@ public class AtiradorPrecisao : MonoBehaviour
 
         if (Physics2D.Linecast(linhaInicio.position, linhaFim.position, 1 << LayerMask.NameToLayer("jogador")))
         {
-
+            espera = true;
 
             var canoPlaye = targ.transform.position - canoInimigo.transform.position;
 
@@ -47,7 +49,10 @@ public class AtiradorPrecisao : MonoBehaviour
 
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-            StartCoroutine(tiroPrecisao(2f));
+            if (espera == true)
+            {
+                StartCoroutine(tiroPrecisao(5f));
+            }
 
         }
 
@@ -58,6 +63,7 @@ public class AtiradorPrecisao : MonoBehaviour
       yield return new WaitForSeconds(troca);
         Instantiate(balaInimigo, new Vector3(canoInimigo.transform.position.x, canoInimigo.transform.position.y,
      canoInimigo.transform.position.z), canoInimigo.transform.rotation);
-        yield return new WaitForSeconds(troca);
+        espera = false;
+
     }
 }

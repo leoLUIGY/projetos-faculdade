@@ -33,7 +33,7 @@ public class NinjaRunner : MonoBehaviour
     public GameObject bala;
 
     public GameObject cenario;
-    public GameObject chao;
+    public GameObject[] chao = new GameObject[2] ;
 
     public Text sucataLiberada;
     public static int sucataPontos;
@@ -74,15 +74,28 @@ public class NinjaRunner : MonoBehaviour
             PlayerPrefs.SetFloat("x", transform.position.x);
 
             PlayerPrefs.SetFloat("y", transform.position.y);
+
+            PlayerPrefs.SetInt("qtb", quantidadeDeBalas);
+
+            PlayerPrefs.SetInt("vidas", vida);
+            PlayerPrefs.SetInt("qta", sucataPontos);
+
         }
     
         if (Menu.carregar == true)
         {
             Vector2 pos = new Vector2(PlayerPrefs.GetFloat("x"), PlayerPrefs.GetFloat("y"));
     transform.position = pos;
+
+            PlayerPrefs.GetInt("qtb");
+
+            PlayerPrefs.GetInt("vidas");
+
+            PlayerPrefs.GetInt("qta");
         }
 
-grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadious, oQueChao);
+      grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadious, oQueChao);
+
         sucataLiberada.text = sucataPontos.ToString();
         vidas.text = vida.ToString();
         balas.text = quantidadeDeBalas.ToString();
@@ -97,7 +110,10 @@ grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadious, oQueChao
 
         if (vida <= 0)
         {
-            Destroy(this.gameObject);
+          
+                Destroy(this.gameObject);
+                
+        
         }
 
 
@@ -212,13 +228,20 @@ grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadious, oQueChao
             {
 
                 cenario.transform.Translate(new Vector2(-3.5f * Time.deltaTime, 0));
-                chao.transform.Translate(new Vector2(-3 * Time.deltaTime, 0));
+
+                for (int i = 0; i < 3; i++)
+                {
+                    chao[i].transform.Translate(new Vector2(-3 * Time.deltaTime, 0));
+                }
             }
             if (Input.GetKey(KeyCode.A))
             {
 
                 cenario.transform.Translate(new Vector2(3.5f * Time.deltaTime, 0));
-                chao.transform.Translate(new Vector2(3 * Time.deltaTime, 0));
+                for (int i = 0; i < 3; i++)
+                {
+                    chao[i].transform.Translate(new Vector2(3 * Time.deltaTime, 0));
+                }
             }
 
 

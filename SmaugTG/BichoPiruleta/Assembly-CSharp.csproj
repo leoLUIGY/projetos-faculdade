@@ -60,6 +60,7 @@
      <Compile Include="Assets\Script\Doge.cs" />
      <Compile Include="Assets\Script\InimigoAtira.cs" />
      <Compile Include="Assets\Script\InimigoNormal.cs" />
+     <Compile Include="Assets\Script\Intro.cs" />
      <Compile Include="Assets\Script\Menu.cs" />
      <Compile Include="Assets\Script\NinjaRunner.cs" />
      <Compile Include="Assets\Script\Portais.cs" />
