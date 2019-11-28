@@ -13,9 +13,9 @@ public class InimigoAtira : MonoBehaviour
     public static bool face = true;
     private float linhaFimX, linhaFimY;
 
-    public bool atirar;
+    public static bool atirar;
     public static bool linha;
-  
+    
     private float vel = 2.5f;
    
     private Animator atiraPara;
@@ -71,7 +71,7 @@ public class InimigoAtira : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
 
-        if (col.gameObject.CompareTag("bala"))
+        if (col.gameObject.CompareTag("balaJohn"))
         {
 
             Destroy(col.gameObject);

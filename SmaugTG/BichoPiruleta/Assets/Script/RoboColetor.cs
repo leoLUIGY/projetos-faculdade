@@ -63,7 +63,7 @@ public class RoboColetor : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
 
-        if (col.gameObject.CompareTag("bala"))
+        if (col.gameObject.CompareTag("balaJohn"))
         {
 
             Destroy(col.gameObject);

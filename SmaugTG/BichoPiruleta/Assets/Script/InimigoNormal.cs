@@ -68,7 +68,7 @@ public class InimigoNormal : MonoBehaviour
    
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("bala"))
+        if (col.gameObject.CompareTag("balaJohn"))
         {
 
             StartCoroutine(danoCor(0.2f));
@@ -101,7 +101,7 @@ public class InimigoNormal : MonoBehaviour
         {
             //vel = 2.5f;
             bater.SetBool("atacar", false);
-            NinjaRunner.vida--;
+            //NinjaRunner.vida--;
             dano = false;
         }
     }
@@ -113,7 +113,13 @@ public class InimigoNormal : MonoBehaviour
         {
             achouPlayer = true;
         }
+
+      
     }
+
+  
+
+
 
     private IEnumerator danoCor(float troca) {
         for (int i = 0; i< 2; i++) {

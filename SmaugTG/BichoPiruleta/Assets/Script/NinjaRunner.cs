@@ -39,7 +39,7 @@ public class NinjaRunner : MonoBehaviour
     public static int sucataPontos;
 
     public static AudioClip andar, atirar;
-    public AudioSource sons;
+    static  AudioSource sons;
 
 
 
@@ -60,7 +60,7 @@ public class NinjaRunner : MonoBehaviour
         tiro.SetBool("tiro", false);
 
         andar = Resources.Load<AudioClip>("Walking");
-        atirar = Resources.Load<AudioClip>("Metralhadora");
+        atirar = Resources.Load<AudioClip>("foton");
 
         sons = GetComponent<AudioSource>();
     }
@@ -161,15 +161,26 @@ public class NinjaRunner : MonoBehaviour
             tiro.SetBool("tiro", false);
 
         }
+
+       
+
     }
 
     void mover()
     {
-        if ((Input.GetKeyUp(KeyCode.D)) || (Input.GetKeyUp(KeyCode.A)))
+        if ((Input.GetKeyUp(KeyCode.D)) || (Input.GetKeyUp(KeyCode.A)) )
         {
             correrAntes = false;
             correndo.SetBool("correndo", correrAntes);
+            sons.loop = false;
             sons.Pause();
+
+        }
+
+        if ((Input.GetKeyDown(KeyCode.D)) || (Input.GetKeyDown(KeyCode.A)))
+        {
+            sons.PlayOneShot(andar);
+            sons.loop = true;
 
         }
 
@@ -181,8 +192,7 @@ public class NinjaRunner : MonoBehaviour
 
             if (correrAntes == true)
             {
-                //sons.PlayOneShot(andar);
-                sons.Play();
+              
                 transform.Translate(new Vector2(vel * Time.deltaTime, 0));
             }
         }
@@ -195,8 +205,8 @@ public class NinjaRunner : MonoBehaviour
 
             if (correrAntes == true)
             {
-                //sons.PlayOneShot(andar);
-                sons.Play();
+             
+
                 transform.Translate(new Vector2(-vel * Time.deltaTime, 0));
             }
         }
@@ -218,7 +228,7 @@ public class NinjaRunner : MonoBehaviour
         {
 
             Destroy(col.gameObject);
-            vida--;
+            //vida--;
         }
 
         if (col.gameObject.CompareTag("parede"))

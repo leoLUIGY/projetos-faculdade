@@ -19,8 +19,8 @@ public class Doge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        var pos = new Vector3(destino.position.x, transform.position.y, transform.position.z);
+        GetComponent<Rigidbody2D>().simulated = false;
+        var pos = new Vector3(destino.position.x-2, transform.position.y, transform.position.z);
          point = pos;
         Vector3 delta = new Vector3(0.3f, 0, 0);
         Vector3 destination = point + delta;
@@ -28,6 +28,10 @@ public class Doge : MonoBehaviour
 
         if (atacar == true) {
             StartCoroutine(ataqueDoge(3f));
+        }
+        if (Portais.outroMapa == true) {
+            transform.position = new Vector3(-7.8f, -2.5f, transform.position.z);
+            Portais.outroMapa = false;
         }
     }
 

@@ -8,6 +8,7 @@ TagManager:
   - parede
   - chao
   - Inimigo
+  - balaJohn
   layers:
   - Default
   - TransparentFX

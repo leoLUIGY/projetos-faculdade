@@ -14,17 +14,21 @@ public class RoboSuicida : MonoBehaviour
     public PlayableDirector director;
    
     public int pointAngle;
-
+   
+  
     // Start is called before the first frame update
     void Start()
     {
         pointAngle = 280;
         colis = false;
+      
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (colis == false)
         {
             director.Play();
@@ -60,7 +64,7 @@ public class RoboSuicida : MonoBehaviour
             Destroy(this.gameObject);
          }
 
-        if (col.gameObject.CompareTag("bala"))
+        if (col.gameObject.CompareTag("balaJohn"))
         {
 
             Destroy(roboSuicida);

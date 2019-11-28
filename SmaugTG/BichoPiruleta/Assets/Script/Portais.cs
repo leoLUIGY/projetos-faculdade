@@ -10,7 +10,7 @@ public class Portais : MonoBehaviour
     public static bool apertou;
     public static bool salvarCamera;
     public  int portal;
-   
+    public static bool outroMapa;
   
     Vector3 posis;
     // Start is called before the first frame update
@@ -21,6 +21,7 @@ public class Portais : MonoBehaviour
         apertou = false;
         portal = 1;
         salvarCamera = false;
+        outroMapa = false;
     }
 
     // Update is called once per frame
@@ -32,6 +33,7 @@ public class Portais : MonoBehaviour
           
         } else if (portal == 2) {
             posis = new Vector3(-7.8f, -2.5f, alvo.transform.position.z);
+
         }
 
 
@@ -61,7 +63,7 @@ public class Portais : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2D(Collider2D col) { 
+    void OnCollisionEnter2D(Collision2D col) { 
         if (col.gameObject.CompareTag("Player")) {
             apertou = true;
 
@@ -72,10 +74,14 @@ public class Portais : MonoBehaviour
     private IEnumerator tempoLoad(float tempo) {
         loading.SetActive(true);
         alvo.transform.position = posis;
+
         yield return new WaitForSeconds(tempo);
         loading.SetActive(false);
         apertou = false;
         portal++;
+        if (portal == 2) {
+            outroMapa = true;
+        }
         PlayerPrefs.SetInt("portais", portal);
         salvarCamera = true;
     }

@@ -14,7 +14,7 @@ public class PrecisaoPersegue : MonoBehaviour
     private float linhaFimX, linhaFimY;
 
     public static bool linha;
-    public bool bater;
+    public static bool bater;
 
     private float vel = 2.5f;
 
@@ -66,7 +66,7 @@ public class PrecisaoPersegue : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
 
-        if (col.gameObject.CompareTag("bala"))
+        if (col.gameObject.CompareTag("balaJohn"))
         {
 
             Destroy(col.gameObject);
