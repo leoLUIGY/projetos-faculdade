@@ -16,7 +16,7 @@ public class NinjaRunner : MonoBehaviour
     public static int quantidadeDeBalas;
     public static bool face = true;
     private float vel = 5f;
-    public static int vida = 3;
+    public static int vida = 5;
 
     private bool correrAntes;
 
@@ -24,7 +24,7 @@ public class NinjaRunner : MonoBehaviour
     private bool grounded;
     private float groundRadious = 0.1f;
     public LayerMask oQueChao;
-    private float jumpForce = 300f;
+    private float jumpForce = 500f;
 
     public static bool parede;
 
@@ -34,6 +34,7 @@ public class NinjaRunner : MonoBehaviour
 
     public GameObject cenario;
     public GameObject[] chao = new GameObject[2] ;
+    public GameObject[] vidasSucata = new GameObject[6];
 
     public Text sucataLiberada;
     public static int sucataPontos;
@@ -63,12 +64,37 @@ public class NinjaRunner : MonoBehaviour
         atirar = Resources.Load<AudioClip>("foton");
 
         sons = GetComponent<AudioSource>();
+
+        PlayerPrefs.SetFloat("x", transform.position.x);
+
+        PlayerPrefs.SetFloat("y", transform.position.y);
+
+        PlayerPrefs.SetInt("qtb", quantidadeDeBalas);
+
+        PlayerPrefs.SetInt("vidas", vida);
+        PlayerPrefs.SetInt("qta", sucataPontos);
+
+        for (int i = 0; i < 4; i++)
+        {
+           vidasSucata[i].SetActive(false);
+
+        }
     }
 
 
     // Update is called once per frame
     void Update()
     {
+       
+
+        for(int i = 0; i <6; i++) { 
+            if(vida == i) {
+                vidasSucata[i].SetActive(true);
+            }
+             else {
+                vidasSucata[i].SetActive(false);
+             }
+        }
         if (Portais.apertou == true)
         {
             PlayerPrefs.SetFloat("x", transform.position.x);

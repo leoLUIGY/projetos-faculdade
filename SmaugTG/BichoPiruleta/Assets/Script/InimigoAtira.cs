@@ -10,7 +10,7 @@ public class InimigoAtira : MonoBehaviour
     public Transform targ;
     public Transform linhaInicio, linhaFim;
    
-    public static bool face = true;
+   
     private float linhaFimX, linhaFimY;
 
     public static bool atirar;
@@ -31,8 +31,8 @@ public class InimigoAtira : MonoBehaviour
     void Update()
     {
 
-        linhaFimX = targ.position.x;
-        linhaFimY = targ.position.y;
+        //linhaFimX = targ.position.x;
+        //linhaFimY = targ.position.y;
 
 
 
@@ -41,10 +41,10 @@ public class InimigoAtira : MonoBehaviour
        
        
 
-        if (atirar == true)
-        {
-            linhaFim.position = new Vector2(linhaFimX, linhaFimY);
-        }
+        //if (atirar == true)
+        //{
+           // linhaFim.position = new Vector2(linhaFimX, linhaFimY);
+        //}
 
         if (linha == true)
         {
@@ -68,6 +68,7 @@ public class InimigoAtira : MonoBehaviour
 
 
     }
+ 
     void OnCollisionEnter2D(Collision2D col)
     {
 

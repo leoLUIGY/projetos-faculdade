@@ -13,7 +13,7 @@ public class AtiradorPrecisao : MonoBehaviour
 
     private float linhaFimX, linhaFimY;
 
-    public static bool linha;
+   // public static bool linha;
 
     private bool espera;
 
@@ -34,27 +34,32 @@ public class AtiradorPrecisao : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        linhaFimX = targ.position.x;
+        linhaFimY = targ.position.y;
+
 
        
+            //Debug.DrawLine(linhaInicio.position, linhaFim.position, Color.green);
+            //linha = Physics2D.Linecast(linhaInicio.position, linhaFim.position, 1 << LayerMask.NameToLayer("jogador"));
 
-      
-        Debug.DrawLine(linhaInicio.position, linhaFim.position, Color.green);
-        linha = Physics2D.Linecast(linhaInicio.position, linhaFim.position, 1 << LayerMask.NameToLayer("jogador"));
-        if (PrecisaoPersegue.bater == true)
-        {
-                if (Physics2D.Linecast(linhaInicio.position, linhaFim.position, 1 << LayerMask.NameToLayer("jogador")))
+            if (Physics2D.Linecast(linhaInicio.position, linhaFim.position, 1 << LayerMask.NameToLayer("jogador")) )
+           {
+            if (PrecisaoPersegue.bater == true)
             {
-           
-
-                var canoPlaye = targ.transform.position - canoInimigo.transform.position;
+                linhaFim.position = new Vector3(linhaFimX, linhaFimY, targ.position.z);
+            }
+            //if (PrecisaoPersegue.bater == true)
+            //{
+            var canoPlaye = targ.transform.position - canoInimigo.transform.position;
 
                 var angle = Mathf.Atan2(canoPlaye.y, canoPlaye.x) * Mathf.Rad2Deg + 270;
 
 
 
                 transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-                StartCoroutine(tiroPrecisao(10f));
-            }
+                StartCoroutine(tiroPrecisao(1f));
+                StartCoroutine(intervaloTiro(5f));
+           // }
         }
 
        
@@ -71,6 +76,18 @@ public class AtiradorPrecisao : MonoBehaviour
            
 
       
+
+
+    }
+
+    private IEnumerator intervaloTiro(float troca)
+    {
+       
+        yield return new WaitForSeconds(troca);
+
+
+
+
 
 
     }

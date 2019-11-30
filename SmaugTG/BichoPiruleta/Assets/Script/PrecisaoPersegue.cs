@@ -9,7 +9,7 @@ public class PrecisaoPersegue : MonoBehaviour
     public Transform linhaInicio, linhaFim;
     Quaternion newRotation;
     public GameObject canoInimigo;
-   
+    public static bool face = true;
 
     private float linhaFimX, linhaFimY;
 
@@ -29,14 +29,14 @@ public class PrecisaoPersegue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+        //linhaFimX = targ.position.x;
+        //linhaFimY = targ.position.y;
 
-        linhaFimX = targ.position.x;
-        linhaFimY = targ.position.y;
-
-        if (bater == true)
-        {
-            linhaFim.position = new Vector3(linhaFimX, linhaFimY, targ.position.z);
-        }
+        // if (bater == true)
+        //{
+        //  linhaFim.position = new Vector3(linhaFimX, linhaFimY, targ.position.z);
+        //}
 
         Debug.DrawLine(linhaInicio.position, linhaFim.position, Color.green);
         linha = Physics2D.Linecast(linhaInicio.position, linhaFim.position, 1 << LayerMask.NameToLayer("jogador"));
@@ -63,6 +63,13 @@ public class PrecisaoPersegue : MonoBehaviour
 
 
     }
+    void flip()
+    {
+        face = !face;
+        Vector3 scala = this.gameObject.GetComponent<Transform>().localScale;
+        scala.x *= -1;
+        this.gameObject.GetComponent<Transform>().localScale = scala;
+    }
     void OnCollisionEnter2D(Collision2D col)
     {
 
@@ -79,6 +86,16 @@ public class PrecisaoPersegue : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
+            if ((targ.transform.position.x > transform.position.x) && face)
+            {
+
+                flip();
+            }
+            else if ((targ.transform.position.x < transform.position.x) && !face)
+            {
+
+                flip();
+            }
             bater = true;
 
         }
@@ -88,9 +105,22 @@ public class PrecisaoPersegue : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            bater = false;
+            if ((targ.transform.position.x > transform.position.x) && face)
+            {
+
+                flip();
+            }
+            else if ((targ.transform.position.x < transform.position.x) && !face)
+            {
+
+                flip();
+            }
+            bater = true;
+
+        }
+        bater = false;
 
         }
 
     }
-}
+
