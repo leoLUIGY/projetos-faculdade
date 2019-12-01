@@ -5,17 +5,7 @@ using UnityEngine;
 public class ReporBalas : MonoBehaviour
 {
     public GameObject muni;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
 
     void OnCollisionEnter2D(Collision2D col)
     {

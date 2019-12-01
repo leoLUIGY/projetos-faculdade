@@ -10,7 +10,7 @@ public class AtiradorPrecisao : MonoBehaviour
     Quaternion newRotation;
     public GameObject canoInimigo;
     public GameObject balaInimigo;
-
+    private bool atirarLiberado;
     private float linhaFimX, linhaFimY;
 
    // public static bool linha;
@@ -30,9 +30,10 @@ public class AtiradorPrecisao : MonoBehaviour
         atirar = Resources.Load<AudioClip>("foton");
 
         sons = GetComponent<AudioSource>();
+        atirarLiberado = false;
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         linhaFimX = targ.position.x;
         linhaFimY = targ.position.y;
@@ -50,40 +51,47 @@ public class AtiradorPrecisao : MonoBehaviour
             }
             //if (PrecisaoPersegue.bater == true)
             //{
+
             var canoPlaye = targ.transform.position - canoInimigo.transform.position;
 
                 var angle = Mathf.Atan2(canoPlaye.y, canoPlaye.x) * Mathf.Rad2Deg + 270;
 
 
-
+           
                 transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-                StartCoroutine(tiroPrecisao(1f));
-                StartCoroutine(intervaloTiro(5f));
-           // }
+
+            StartCoroutine(intervaloTiro(3f));
+
         }
 
-       
+            if (atirarLiberado == true) {
+            StartCoroutine(tiroPrecisao(1f));
+
+        }
+
 
     }
 
     private IEnumerator tiroPrecisao(float troca)
     {
-            sons.PlayOneShot(atirar);
-            Instantiate(balaInimigo, new Vector3(canoInimigo.transform.position.x, canoInimigo.transform.position.y,
-         canoInimigo.transform.position.z), canoInimigo.transform.rotation);
+            
             yield return new WaitForSeconds(troca);
+        sons.PlayOneShot(atirar);
+        Instantiate(balaInimigo, new Vector3(canoInimigo.transform.position.x, canoInimigo.transform.position.y,
+     canoInimigo.transform.position.z), canoInimigo.transform.rotation);
+       
 
-           
 
-      
+
 
 
     }
-
+    
     private IEnumerator intervaloTiro(float troca)
     {
-       
+        atirarLiberado = false;
         yield return new WaitForSeconds(troca);
+        atirarLiberado = true;
 
 
 

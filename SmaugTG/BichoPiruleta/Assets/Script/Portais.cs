@@ -49,10 +49,10 @@ public class Portais : MonoBehaviour
         {
             if (portal == 1)
             {
-                //Destroy(this.gameObject);
+                Destroy(this.gameObject);
                 //Menu.Continuar();
-               // SceneManager.LoadScene(2);
-                //NinjaRunner.vida = 3;
+                 SceneManager.LoadScene(2);
+                NinjaRunner.vida = 6;
             }
             else if (portal > 1)
             { 

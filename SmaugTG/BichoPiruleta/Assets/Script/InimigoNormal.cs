@@ -12,7 +12,7 @@ public class InimigoNormal : MonoBehaviour
   
     public GameObject heroi;
     public GameObject inimigo;
-    public GameObject muni;
+    public GameObject[] muni = new GameObject[2];
    
 
     public  bool achouPlayer;
@@ -37,6 +37,7 @@ public class InimigoNormal : MonoBehaviour
     // Update is called once per frames
     void Update()
     {
+       
         if (achouPlayer == true)
         {
            
@@ -99,9 +100,10 @@ public class InimigoNormal : MonoBehaviour
                 NinjaRunner.vida--;
                 StartCoroutine(danoCorHeroi(0.2f));
            
+        }
 
-
-
+        if(col.gameObject.CompareTag("Doge")) {
+            dano = true;
         }
     }
     void OnCollisionExit2D(Collision2D col)
@@ -121,48 +123,55 @@ public class InimigoNormal : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            if ((heroi.transform.position.x > inimigo.transform.position.x) && face)
+            if ((transform.position.x < heroi.transform.position.x) && (face))
             {
                 vel *= -1;
                 flip();
             }
-            if ((heroi.transform.position.x < inimigo.transform.position.x) && !face)
+            if ((transform.position.x > heroi.transform.position.x) && (!face))
             {
                 vel *= -1;
                 flip();
             }
+
             achouPlayer = true;
 
         }
-        }
 
-        void OnTriggerExit2D(Collider2D col)
-        {
+
+      
+
+    }
+
+
+    void OnTriggerExit2D(Collider2D col)
+    {
         if (col.gameObject.CompareTag("Player"))
         {
-            if ((heroi.transform.position.x > inimigo.transform.position.x) && face)
+            if ((transform.position.x < heroi.transform.position.x) && (face))
             {
                 vel *= -1;
                 flip();
             }
-            if ((heroi.transform.position.x < inimigo.transform.position.x) && !face)
+            if ((transform.position.x > heroi.transform.position.x) && (!face))
             {
                 vel *= -1;
                 flip();
             }
-            achouPlayer = false;
+
 
         }
+
 
 
 
     }
 
-    
 
 
 
-        private IEnumerator danoCor(float troca) {
+
+    private IEnumerator danoCor(float troca) {
         for (int i = 0; i< 2; i++) {
             inimigo.GetComponent<SpriteRenderer>().color = Color.red;
             yield return new WaitForSeconds(troca);
@@ -183,22 +192,24 @@ public class InimigoNormal : MonoBehaviour
         }
         if (!face)
         {
-            heroi.transform.Translate(new Vector3(heroi.transform.position.x - 2f, heroi.transform.position.y, heroi.transform.position.z));
+          heroi.transform.Translate(new Vector3(1f * Time.deltaTime, 0, 0));
         } else if (face) {
-            heroi.transform.Translate(new Vector3(heroi.transform.position.x + 2f, heroi.transform.position.y, heroi.transform.position.z));
+           heroi.transform.Translate(new Vector3(-1f * Time.deltaTime, 0, 0));
         }
     }
 
     private IEnumerator morrendoEfeito(float troca)
     {
-       
+
+
         yield return new WaitForSeconds(troca);
-        Instantiate(muni, new Vector3(inimigo.transform.position.x, inimigo.transform.position.y, inimigo.transform.position.z), inimigo.transform.rotation);
-      
-         int sucata = Random.Range(0, 10);
+        int sucata = Random.Range(0, 11);
+        int caixa = Random.Range(0, 2);
 
         if (sucata < 7)
         {
+            Instantiate(muni[caixa], new Vector3(inimigo.transform.position.x, inimigo.transform.position.y, inimigo.transform.position.z), inimigo.transform.rotation);
+
             NinjaRunner.sucataPontos += 1;
         }
 

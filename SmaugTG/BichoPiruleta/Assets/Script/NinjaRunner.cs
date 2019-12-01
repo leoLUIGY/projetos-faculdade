@@ -27,13 +27,15 @@ public class NinjaRunner : MonoBehaviour
     private float jumpForce = 500f;
 
     public static bool parede;
+    public static bool cam;
 
     public GameObject cano;
     //public Transform heroiT;
     public GameObject bala;
 
     public GameObject cenario;
-    public GameObject[] chao = new GameObject[2] ;
+    
+    public GameObject[] chao = new GameObject[4] ;
     public GameObject[] vidasSucata = new GameObject[6];
 
     public Text sucataLiberada;
@@ -49,6 +51,7 @@ public class NinjaRunner : MonoBehaviour
     {
         body = gameObject.GetComponent<Rigidbody2D>();
         correrAntes = false;
+        cam = false;
         quantidadeDeBalas = 10;
         sucataPontos = 0;
         correndo = GetComponent<Animator>();
@@ -172,15 +175,27 @@ public class NinjaRunner : MonoBehaviour
 
         if (Input.GetKey(KeyCode.V) && (quantidadeDeBalas > 0))
         {
+            if (Input.GetKey(KeyCode.W))
+            {
+                cano.transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            else if(!face)
+            {
+                
+                cano.transform.rotation = Quaternion.Euler(0, 0, 90);
+            } else if (face) {
+                cano.transform.rotation = Quaternion.Euler(0, 0, -90);
+            }
             tiro.SetBool("tiro", true);
             quantidadeDeBalas--;
             sons.PlayOneShot(atirar);
             Instantiate(bala, new Vector3(cano.transform.position.x, cano.transform.position.y, cano.transform.position.z), cano.transform.rotation);
 
-
+           
 
 
         }
+       
         //if (Input.GetKeyUp(KeyCode.C))
         else
         {
@@ -257,7 +272,7 @@ public class NinjaRunner : MonoBehaviour
             //vida--;
         }
 
-        if (col.gameObject.CompareTag("parede"))
+        /*if (col.gameObject.CompareTag("parede"))
         {
 
             if (Input.GetKey(KeyCode.D))
@@ -282,6 +297,7 @@ public class NinjaRunner : MonoBehaviour
 
 
         }
+        */      
 
        
 
@@ -297,8 +313,14 @@ public class NinjaRunner : MonoBehaviour
 
         }
 
+        if (col.gameObject.CompareTag("cam")) {
+            cam = true;
+            StartCoroutine(camEfeito(3f));
+        }
+
+
     }
-    void OnTriggerExit2D(Collider2D col)
+   void OnTriggerExit2D(Collider2D col)
     {
 
 
@@ -311,4 +333,12 @@ public class NinjaRunner : MonoBehaviour
 
     }
 
+    private IEnumerator camEfeito(float troca)
+    {
+
+
+        yield return new WaitForSeconds(troca);
+        cam = false;
+
+    }
 }

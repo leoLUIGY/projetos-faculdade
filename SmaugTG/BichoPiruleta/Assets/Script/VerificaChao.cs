@@ -5,7 +5,7 @@ using UnityEngine;
 public class VerificaChao : MonoBehaviour
 {
     public Transform linhaInicioChao, linhaFimChao;
-    public  bool face = true;
+    public bool face = true;
     private Animator correndo;
 
     public float vel = 2.5f;
@@ -15,7 +15,8 @@ public class VerificaChao : MonoBehaviour
         correndo = GetComponent<Animator>();
     }
 
-    void Update() {
+    void Update()
+    {
         linhaChao = Physics2D.Linecast(linhaInicioChao.position, linhaFimChao.position, 1 << LayerMask.NameToLayer("chao"));
 
         if (linhaChao == true && InimigoAtira.linha == false)
@@ -34,11 +35,15 @@ public class VerificaChao : MonoBehaviour
         }
     }
 
-   public void flip()
+    public void flip()
     {
         face = !face;
         Vector3 scala = this.gameObject.GetComponent<Transform>().localScale;
         scala.x *= -1;
         this.gameObject.GetComponent<Transform>().localScale = scala;
     }
+
+
+
+   
 }

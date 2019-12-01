@@ -9,6 +9,8 @@ TagManager:
   - chao
   - Inimigo
   - balaJohn
+  - Doge
+  - cam
   layers:
   - Default
   - TransparentFX

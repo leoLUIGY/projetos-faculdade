@@ -23,11 +23,11 @@ public class AutoCameraSetup : MonoBehaviour
         if (target) {
             Vector3 delta;
             Vector3 point = GetComponent<Camera>().WorldToViewportPoint(target.position);
-            if (Portais.apertou == true)
+            if (Portais.apertou == true || NinjaRunner.cam == true)
             {
                 delta = target.position - GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.1f, point.z));
                
-            } else if (NinjaRunner.parede == true) {
+            } else if (NinjaRunner.parede == true ) {
                 delta = target.position - GetComponent<Camera>().ViewportToWorldPoint(new Vector3(point.x, point.y, point.z));
             }
             else
@@ -56,4 +56,5 @@ public class AutoCameraSetup : MonoBehaviour
             Menu.carregar = false;
         }
     }
+
 }

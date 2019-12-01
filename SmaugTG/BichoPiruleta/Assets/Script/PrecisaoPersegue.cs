@@ -70,9 +70,25 @@ public class PrecisaoPersegue : MonoBehaviour
         scala.x *= -1;
         this.gameObject.GetComponent<Transform>().localScale = scala;
     }
+    private IEnumerator danoCor(float troca)
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            GetComponent<SpriteRenderer>().color = Color.red;
+            yield return new WaitForSeconds(troca);
+            GetComponent<SpriteRenderer>().color = Color.white;
+            yield return new WaitForSeconds(troca);
+        }
+        Destroy(this.gameObject);
+    }
+
     void OnCollisionEnter2D(Collision2D col)
     {
-
+        if (col.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(danoCor(0.2f));
+           
+        }
         if (col.gameObject.CompareTag("balaJohn"))
         {
 
@@ -115,10 +131,10 @@ public class PrecisaoPersegue : MonoBehaviour
 
                 flip();
             }
-            bater = true;
 
+            bater = false;
         }
-        bater = false;
+
 
         }
 

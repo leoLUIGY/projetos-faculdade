@@ -68,7 +68,18 @@ public class InimigoAtira : MonoBehaviour
 
 
     }
- 
+    private IEnumerator danoCor(float troca)
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            GetComponent<SpriteRenderer>().color = Color.red;
+            yield return new WaitForSeconds(troca);
+            GetComponent<SpriteRenderer>().color = Color.white;
+            yield return new WaitForSeconds(troca);
+        }
+        Destroy(this.gameObject);
+    }
+
     void OnCollisionEnter2D(Collision2D col)
     {
 
@@ -79,8 +90,12 @@ public class InimigoAtira : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+        if (col.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(danoCor(0.2f));
+        }
 
-    }
+        }
     void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.CompareTag("Player"))
         {
