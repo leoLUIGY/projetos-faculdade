@@ -10,7 +10,7 @@ public class RoboColetor : MonoBehaviour
 
 
     private Animator correndo;
-   
+    Animator anim;
     private Animator tiro;
     public GameObject heroi;
     public static bool face = true;
@@ -37,7 +37,7 @@ public class RoboColetor : MonoBehaviour
         correndo = GetComponent<Animator>();
       
         tiro = GetComponent<Animator>();
-
+        anim = gameObject.GetComponent<Animator>();
 
         correndo.SetBool("RoboAndando", true);
        
@@ -52,8 +52,10 @@ public class RoboColetor : MonoBehaviour
         //linha = Physics2D.Linecast(linhaInicio.position, linhaFim.position, 1 << LayerMask.NameToLayer("jogador"));
         if (perseguir == true)
         {
+            anim.speed = 1;
             roboAtirando = false;
             roboAndando = true;
+
             if (Physics2D.Linecast(linhaIn.position, linhaFi.position, 1 << LayerMask.NameToLayer("jogador")))
             {
                 roboAtirando = true;
@@ -73,6 +75,13 @@ public class RoboColetor : MonoBehaviour
             correndo.SetBool("RoboAndando", false);
            
             tiro.SetBool("roboAtirando", true);
+            StartCoroutine(anima(0.49f));
+          
+               
+         
+
+
+            
           
         }
         if (vidas == 0)
@@ -80,14 +89,20 @@ public class RoboColetor : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-       
-
-
-
 
 
        
 
+
+
+
+
+    }
+    private IEnumerator anima(float troca)
+    {
+        yield return new WaitForSeconds(troca);
+        //tiro.speed = 0;
+        anim.speed = 0;
     }
 
     void flip()

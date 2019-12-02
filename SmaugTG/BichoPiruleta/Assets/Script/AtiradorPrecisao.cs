@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -47,57 +48,52 @@ public class AtiradorPrecisao : MonoBehaviour
            {
             if (PrecisaoPersegue.bater == true)
             {
-                StartCoroutine(intervaloTiro(3f));
-
-                linhaFim.position = new Vector3(linhaFimX, linhaFimY, targ.position.z);
+                StartCoroutine(tiroPrecisao(2f));
+              
+               
             }
             //if (PrecisaoPersegue.bater == true)
             //{
 
             var canoPlaye = targ.transform.position - canoInimigo.transform.position;
 
-                var angle = Mathf.Atan2(canoPlaye.y, canoPlaye.x) * Mathf.Rad2Deg + 270;
+            var angle = Mathf.Atan2(canoPlaye.y, canoPlaye.x) * Mathf.Rad2Deg + 270;
+
+
+
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
 
            
-                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-           
-        }
-
-            if (atirarLiberado == true) {
-            StartCoroutine(tiroPrecisao(1f));
 
         }
+
+
 
 
     }
 
+  
     private IEnumerator tiroPrecisao(float troca)
     {
-            
+        if (PrecisaoPersegue.bater == true)
+        {
+            PrecisaoPersegue.bater = false;
+            Instantiate(balaInimigo, new Vector3(canoInimigo.transform.position.x, canoInimigo.transform.position.y,
+        canoInimigo.transform.position.z), canoInimigo.transform.rotation);
             yield return new WaitForSeconds(troca);
-        sons.PlayOneShot(atirar);
-        Instantiate(balaInimigo, new Vector3(canoInimigo.transform.position.x, canoInimigo.transform.position.y,
-     canoInimigo.transform.position.z), canoInimigo.transform.rotation);
-       
+            linhaFim.position = new Vector3(linhaFimX, linhaFimY, targ.position.z);
+            PrecisaoPersegue.bater = true;
+        }
+        //
+        // yield return new WaitForSeconds(troca);
+        // if (PrecisaoPersegue.bater == true)
+        //{
+        //   StartCoroutine(tiroPrecisao(troca));
 
-
-
-
-
-    }
-    
-    private IEnumerator intervaloTiro(float troca)
-    {
-        atirarLiberado = false;
-        yield return new WaitForSeconds(troca);
-        atirarLiberado = true;
-
-
-
-
+        //}
 
 
     }
+ 
 }

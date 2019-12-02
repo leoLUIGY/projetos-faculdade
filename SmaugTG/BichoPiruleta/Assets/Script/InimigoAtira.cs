@@ -9,8 +9,8 @@ public class InimigoAtira : MonoBehaviour
 
     public Transform targ;
     public Transform linhaInicio, linhaFim;
-   
-   
+
+    private float velAnterior;
     private float linhaFimX, linhaFimY;
 
     public static bool atirar;
@@ -101,6 +101,8 @@ public class InimigoAtira : MonoBehaviour
         {
 
             atirar = true;
+            velAnterior = vel;
+            vel = 0;
         }
 
     }
@@ -109,6 +111,8 @@ public class InimigoAtira : MonoBehaviour
         if (col.gameObject.CompareTag("Player"))
         {
 
+            atirar = false;
+            vel = velAnterior;
             atirar = false;
         }
 

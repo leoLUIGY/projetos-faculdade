@@ -10,6 +10,7 @@ public class NinjaRunner : MonoBehaviour
     private Animator ataqueNormal;
     private Animator tiro;
     private Animator tiroCima;
+    Animator anim;
     public Text balas;
     public Text vidas;
 
@@ -60,7 +61,7 @@ public class NinjaRunner : MonoBehaviour
         ataqueNormal = GetComponent<Animator>();
         tiro = GetComponent<Animator>();
         tiroCima = GetComponent<Animator>();
-
+        anim = gameObject.GetComponent<Animator>();
 
         correndo.SetBool("correndo", false);
         ataqueNormal.SetBool("ataqueNormal", false);
@@ -167,6 +168,7 @@ public class NinjaRunner : MonoBehaviour
 
     public void ataques()
     {
+        anim.speed = 1;
         if (Input.GetKeyDown(KeyCode.Space))
         {
 
@@ -204,9 +206,9 @@ public class NinjaRunner : MonoBehaviour
             quantidadeDeBalas--;
             sons.PlayOneShot(atirar);
 
-            StartCoroutine(tiroJohn(0.5f));
+            StartCoroutine(tiroJohn(0.20f));
            
-
+            
 
         }
        
@@ -360,6 +362,7 @@ public class NinjaRunner : MonoBehaviour
 
 
         yield return new WaitForSeconds(troca);
+        anim.speed = 0;
         Instantiate(bala, new Vector3(cano.transform.position.x, cano.transform.position.y, cano.transform.position.z), cano.transform.rotation);
 
     }

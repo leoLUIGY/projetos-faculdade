@@ -42,7 +42,7 @@ public class CanoRotaçao : MonoBehaviour
 
             if (InimigoAtira.atirar == true)
             {
-                linhaFim.position = new Vector2(linhaFimX, linhaFimY);
+                StartCoroutine(tiroFuzil(1f));
             }
 
             var canoPlaye = destino.transform.position - transform.position;
@@ -51,8 +51,8 @@ public class CanoRotaçao : MonoBehaviour
 
 
                 transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-                StartCoroutine(tiroFuzil(1f));
-                StartCoroutine(intervaloFuzil(5f));
+                
+               
             //}
         }
 
@@ -60,18 +60,17 @@ public class CanoRotaçao : MonoBehaviour
     }
     private IEnumerator tiroFuzil(float troca)
     {
-
+        if (InimigoAtira.atirar == true)
+        {
+            InimigoAtira.atirar = false;
             sons.PlayOneShot(atirar);
             Instantiate(balaInimigo, new Vector3(canoInimigo.transform.position.x, canoInimigo.transform.position.y,
 canoInimigo.transform.position.z), transform.rotation);
             yield return new WaitForSeconds(troca);
+            linhaFim.position = new Vector2(linhaFimX, linhaFimY);
+            InimigoAtira.atirar = true;
+        }
 
     }
-    private IEnumerator intervaloFuzil(float troca)
-    {
-
-
-        yield return new WaitForSeconds(troca);
-
-    }
+  
 }
