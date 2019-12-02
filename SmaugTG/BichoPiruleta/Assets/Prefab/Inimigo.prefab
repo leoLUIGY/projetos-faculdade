@@ -114,9 +114,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 912e2fe9b76696cc49c18ebbc61a748d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heroi: {fileID: 6956885058027675911, guid: fea06947534baa4a585388b312802750, type: 3}
+  vidas: 0
+  heroi: {fileID: 3747708571020888167, guid: 07b4f57cf0bc6d71683be97deca5cc0e, type: 3}
   inimigo: {fileID: 9195702908804502064}
-  muni: {fileID: 1849462825018062301, guid: f20350510b640d46d817c95b83530df7, type: 3}
+  muni:
+  - {fileID: 6437180079791071190, guid: 45951d182a8893616956331b4e65593c, type: 3}
+  - {fileID: 7223972590662064211, guid: 1d2c8c2f4480afacc81da6c8073f8206, type: 3}
+  achouPlayer: 0
+  linhaChao: 0
 --- !u!61 &9195702908804502076
 BoxCollider2D:
   m_ObjectHideFlags: 0

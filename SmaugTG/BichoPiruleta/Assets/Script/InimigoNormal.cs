@@ -13,8 +13,8 @@ public class InimigoNormal : MonoBehaviour
     public GameObject heroi;
     public GameObject inimigo;
     public GameObject[] muni = new GameObject[2];
-   
 
+    private float velAnterior;
     public  bool achouPlayer;
     private Animator bater;
     private Animator morrendo;
@@ -93,7 +93,7 @@ public class InimigoNormal : MonoBehaviour
                 Time.timeScale = 0;
                 TutorialCenario.teclas = 4;
             }
-         
+            velAnterior = vel;
                 vel = 0;
                 bater.SetBool("atacar", true);
                 dano = true;
@@ -111,7 +111,7 @@ public class InimigoNormal : MonoBehaviour
        
         if (col.gameObject.CompareTag("Player"))
         {
-            //vel = 2.5f;
+            vel = velAnterior;
             bater.SetBool("atacar", false);
             //NinjaRunner.vida--;
             dano = false;

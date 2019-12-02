@@ -47,6 +47,8 @@ public class AtiradorPrecisao : MonoBehaviour
            {
             if (PrecisaoPersegue.bater == true)
             {
+                StartCoroutine(intervaloTiro(3f));
+
                 linhaFim.position = new Vector3(linhaFimX, linhaFimY, targ.position.z);
             }
             //if (PrecisaoPersegue.bater == true)
@@ -60,8 +62,7 @@ public class AtiradorPrecisao : MonoBehaviour
            
                 transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-            StartCoroutine(intervaloTiro(3f));
-
+           
         }
 
             if (atirarLiberado == true) {

@@ -9,6 +9,7 @@ public class NinjaRunner : MonoBehaviour
     private Animator correndo;
     private Animator ataqueNormal;
     private Animator tiro;
+    private Animator tiroCima;
     public Text balas;
     public Text vidas;
 
@@ -30,6 +31,7 @@ public class NinjaRunner : MonoBehaviour
     public static bool cam;
 
     public GameObject cano;
+    private float canoCima = 2f;
     //public Transform heroiT;
     public GameObject bala;
 
@@ -57,11 +59,13 @@ public class NinjaRunner : MonoBehaviour
         correndo = GetComponent<Animator>();
         ataqueNormal = GetComponent<Animator>();
         tiro = GetComponent<Animator>();
+        tiroCima = GetComponent<Animator>();
 
 
         correndo.SetBool("correndo", false);
         ataqueNormal.SetBool("ataqueNormal", false);
         tiro.SetBool("tiro", false);
+        tiroCima.SetBool("tiroCima", false);
 
         andar = Resources.Load<AudioClip>("Walking");
         atirar = Resources.Load<AudioClip>("foton");
@@ -148,11 +152,13 @@ public class NinjaRunner : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.D) && !face)
         {
+
             flip();
 
         }
         else if (Input.GetKeyDown(KeyCode.A) && face)
         {
+           
             flip();
 
         }
@@ -177,20 +183,28 @@ public class NinjaRunner : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W))
             {
+                tiroCima.SetBool("tiroCima", true);
+               // cano.transform.position = new Vector3(canoCima, 2.5f, cano.transform.position.z);
                 cano.transform.rotation = Quaternion.Euler(0, 0, 0);
+            } else {
+                tiroCima.SetBool("tiroCima", false);
             }
-            else if(!face)
+
+           if (!face)
             {
-                
+
                 cano.transform.rotation = Quaternion.Euler(0, 0, 90);
+               
             } else if (face) {
                 cano.transform.rotation = Quaternion.Euler(0, 0, -90);
+
             }
+           // cano.transform.position = new Vector3(2.6f, 0 , cano.transform.position.z);
             tiro.SetBool("tiro", true);
             quantidadeDeBalas--;
             sons.PlayOneShot(atirar);
-            Instantiate(bala, new Vector3(cano.transform.position.x, cano.transform.position.y, cano.transform.position.z), cano.transform.rotation);
 
+            StartCoroutine(tiroJohn(0.5f));
            
 
 
@@ -339,6 +353,14 @@ public class NinjaRunner : MonoBehaviour
 
         yield return new WaitForSeconds(troca);
         cam = false;
+
+    }
+    private IEnumerator tiroJohn(float troca)
+    {
+
+
+        yield return new WaitForSeconds(troca);
+        Instantiate(bala, new Vector3(cano.transform.position.x, cano.transform.position.y, cano.transform.position.z), cano.transform.rotation);
 
     }
 }
