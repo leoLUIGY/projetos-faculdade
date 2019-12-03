@@ -6,10 +6,13 @@ public class PrecisaoPersegue : MonoBehaviour
 {
 
     public Transform targ;
+    private int angle;
+    public GameObject bEsquerdo;
+    public GameObject bDireito;
     public Transform linhaInicio, linhaFim;
     Quaternion newRotation;
     public GameObject canoInimigo;
-    public static bool face = true;
+    public  bool face = true;
 
     private float linhaFimX, linhaFimY;
 
@@ -24,6 +27,7 @@ public class PrecisaoPersegue : MonoBehaviour
     {
         atiraPara = GetComponent<Animator>();
         bater = false;
+        angle = 170;
 
     }
     // Update is called once per frame
@@ -61,7 +65,19 @@ public class PrecisaoPersegue : MonoBehaviour
 
         }
 
+        var angle1 = Mathf.Atan2(targ.position.y - bEsquerdo.transform.position.y, targ.position.x - bEsquerdo.transform.position.x) * Mathf.Rad2Deg + angle;
+        var angle2 = Mathf.Atan2(targ.position.y - bDireito.transform.position.y, targ.position.x - bDireito.transform.position.x) * Mathf.Rad2Deg + angle;
 
+        if (face)
+        {
+            angle = 170;
+            bEsquerdo.transform.rotation = Quaternion.Euler(0, -180, -angle1 + 15);
+            bDireito.transform.rotation = Quaternion.Euler(0,-180, -angle1 + 15);
+        } else if (!face) {
+            angle = 35;
+            bEsquerdo.transform.rotation = Quaternion.Euler(0, -180, -angle1 + 15);
+            bDireito.transform.rotation = Quaternion.Euler(0, -180, -angle1 + 15);
+        }
     }
     void flip()
     {
@@ -102,12 +118,12 @@ public class PrecisaoPersegue : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            if ((targ.transform.position.x > transform.position.x) && face)
+            if ((targ.transform.position.x > transform.position.x - 2f) && face)
             {
 
                 flip();
             }
-            else if ((targ.transform.position.x < transform.position.x) && !face)
+            else if ((targ.transform.position.x < transform.position.x + 2f) && !face)
             {
 
                 flip();

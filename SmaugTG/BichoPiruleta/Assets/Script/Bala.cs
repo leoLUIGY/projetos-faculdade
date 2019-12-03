@@ -14,7 +14,7 @@ public class Bala : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(new Vector2(0, velBala * Time.deltaTime));
+        transform.Translate(new Vector2(0,velBala * Time.deltaTime));
 
     }
 

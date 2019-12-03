@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Intro : MonoBehaviour
 {
-
+    
     public GameObject cam = GameObject.Find("Main Camera");
 
     // Start is called before the first frame update

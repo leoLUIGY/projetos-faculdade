@@ -56,6 +56,7 @@
      <Compile Include="Assets\Script\AtiradorPrecisao.cs" />
      <Compile Include="Assets\Script\AutoCameraSetup.cs" />
      <Compile Include="Assets\Script\Bala.cs" />
+     <Compile Include="Assets\Script\Bracos.cs" />
      <Compile Include="Assets\Script\CanoRotaçao.cs" />
      <Compile Include="Assets\Script\ColisaoDesativada.cs" />
      <Compile Include="Assets\Script\Doge.cs" />

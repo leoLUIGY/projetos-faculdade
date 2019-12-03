@@ -7,6 +7,7 @@ public class Portais : MonoBehaviour
 {
     public GameObject alvo;
     public GameObject loading;
+    public GameObject[] visor = new GameObject[4];
     public static bool apertou;
     public static bool salvarCamera;
     public  int portal;
@@ -72,10 +73,17 @@ public class Portais : MonoBehaviour
     }
 
     private IEnumerator tempoLoad(float tempo) {
+        for (int i = 0; i<5; i++) {
+            visor[i].SetActive(false);
+        }
         loading.SetActive(true);
         alvo.transform.position = posis;
 
         yield return new WaitForSeconds(tempo);
+        for (int j = 0; j < 5; j++)
+        {
+            visor[j].SetActive(true);
+        }
         loading.SetActive(false);
         apertou = false;
         portal++;

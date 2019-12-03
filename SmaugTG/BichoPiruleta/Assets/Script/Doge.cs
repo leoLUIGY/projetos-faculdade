@@ -12,12 +12,16 @@ public class Doge : MonoBehaviour
     public GameObject[] doggeEspecial = new GameObject[6];
     private int especial = 6;
     Vector3 point;
+
+    private Animator dogeAndando;
     // Start is called before the first frame update
     void Start()
     {
         atacar = false;
         for (int i = 0; i <4; i++) {
             doggeEspecial[i].SetActive(false);
+            dogeAndando = GetComponent<Animator>();
+            dogeAndando.SetBool("dogeAndando", false);
         }
     }
 
@@ -47,13 +51,17 @@ public class Doge : MonoBehaviour
         else
         {
 
-            var pos = new Vector3(destino.position.x - 2, transform.position.y, transform.position.z);
+            var pos = new Vector3(destino.position.x - 2.5f, transform.position.y, transform.position.z);
             point = pos;
             Vector3 delta = new Vector3(0.3f, 0, 0);
             Vector3 destination = point + delta;
             transform.position = Vector3.SmoothDamp(transform.position, destination, ref velocity, dampTime);
 
-
+            if (transform.position == point) {
+                dogeAndando.SetBool("dogeAndando", false);
+            } else if (transform.position != point) {
+                dogeAndando.SetBool("dogeAndando", true);
+            }
 
 
             if (Portais.outroMapa == true)

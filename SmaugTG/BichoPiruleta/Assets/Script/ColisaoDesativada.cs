@@ -21,6 +21,7 @@ public class ColisaoDesativada : MonoBehaviour
 
         if (col.gameObject.CompareTag("Inimigo"))
         {
+
             GetComponent<BoxCollider2D>().isTrigger = true;
         }
     }
@@ -32,6 +33,7 @@ public class ColisaoDesativada : MonoBehaviour
         if (col.gameObject.CompareTag("Inimigo"))
         {
             GetComponent<BoxCollider2D>().isTrigger = false;
+           
         }
     }
 }

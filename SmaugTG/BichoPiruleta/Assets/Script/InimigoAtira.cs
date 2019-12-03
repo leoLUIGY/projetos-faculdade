@@ -16,7 +16,7 @@ public class InimigoAtira : MonoBehaviour
     public static bool atirar;
     public static bool linha;
     
-    private float vel = 2.5f;
+   
    
     private Animator atiraPara;
     // Start is called before the first frame update
@@ -46,7 +46,7 @@ public class InimigoAtira : MonoBehaviour
            // linhaFim.position = new Vector2(linhaFimX, linhaFimY);
         //}
 
-        if (linha == true)
+        if (linha == true || atirar == true)
         {
           
            
@@ -60,6 +60,7 @@ public class InimigoAtira : MonoBehaviour
         {
 
             atiraPara.SetBool("playerNaMira", false);
+            correndo.SetBool("andando", true);
             
         }
 
@@ -101,8 +102,7 @@ public class InimigoAtira : MonoBehaviour
         {
 
             atirar = true;
-            velAnterior = vel;
-            vel = 0;
+
         }
 
     }
@@ -111,10 +111,20 @@ public class InimigoAtira : MonoBehaviour
         if (col.gameObject.CompareTag("Player"))
         {
 
-            atirar = false;
-            vel = velAnterior;
-            atirar = false;
+            StartCoroutine(intervaloAtirarFalse(2f));
+           
+           
         }
 
+    }
+
+
+    private IEnumerator intervaloAtirarFalse(float troca)
+    {
+
+        atirar = false;
+            yield return new WaitForSeconds(troca);
+        atirar = false;
+       
     }
 }
